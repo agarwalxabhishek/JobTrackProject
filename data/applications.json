@@ -1,0 +1,8 @@
+[
+  {"id":1,"company":"Google","role":"Frontend Developer Intern","status":"Interview","date":"2026-08-28","location":"Bangalore / Hybrid","type":"Internship","notes":"Prepare for the technical interview and review React fundamentals."},
+  {"id":2,"company":"Microsoft","role":"Software Engineer Intern","status":"Applied","date":"2026-08-30","location":"Hyderabad","type":"Internship","notes":"Application submitted through the careers portal."},
+  {"id":3,"company":"Amazon","role":"SDE Intern","status":"Applied","date":"2026-08-31","location":"Bangalore","type":"Internship","notes":"Waiting for online assessment invitation."},
+  {"id":4,"company":"Adobe","role":"Frontend Engineer","status":"Offer","date":"2026-08-24","location":"Noida","type":"Full-time","notes":"Offer received. Review the compensation and joining details."},
+  {"id":5,"company":"TCS","role":"Graduate Engineer Trainee","status":"Rejected","date":"2026-08-20","location":"Noida","type":"Full-time","notes":"Keep profile updated for future openings."},
+  {"id":6,"company":"Infosys","role":"React Developer","status":"Applied","date":"2026-08-27","location":"Pune / Remote","type":"Full-time","notes":"Follow up after one week if there is no response."}
+]

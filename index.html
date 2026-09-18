@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobTrack — Application Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="brand-mark">J</span><span>Job<span>Track</span></span></a>
+    <nav>
+      <a href="#home" data-page="home">Home</a>
+      <a href="#dashboard" data-page="dashboard">Dashboard</a>
+      <a href="#applications" data-page="applications">Applications</a>
+    </nav>
+    <button class="btn btn-primary" id="addTopBtn">+ Add Application</button>
+  </header>
+
+  <main>
+    <section id="home" class="page">
+      <div class="hero">
+        <div>
+          <span class="eyebrow">SMART JOB SEARCH ORGANIZER</span>
+          <h1>Take control of your <span>job search.</span></h1>
+          <p>Track applications, organize interviews and keep every opportunity in one clean workspace.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="startBtn">Start Tracking</button>
+            <a class="btn btn-light" href="#dashboard">View Dashboard</a>
+          </div>
+          <div class="trust-row"><span>✓ Simple workflow</span><span>✓ Responsive design</span><span>✓ Local data storage</span></div>
+        </div>
+        <div class="hero-card">
+          <div class="mini-top"><span>Application Overview</span><span class="live-dot">● Live</span></div>
+          <div class="mini-stat"><strong id="heroTotal">6</strong><span>Total applications</span></div>
+          <div class="pipeline">
+            <div><span>Applied</span><b id="heroApplied">3</b></div>
+            <div><span>Interview</span><b id="heroInterview">2</b></div>
+            <div><span>Offer</span><b id="heroOffer">1</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="section-heading"><div><span class="eyebrow">WHY JOBTRACK</span><h2>Everything you need in one place</h2></div></div>
+      <div class="feature-grid">
+        <article><div class="feature-icon">▦</div><h3>Centralized tracking</h3><p>Keep company, role, status, dates and notes together instead of scattered across spreadsheets.</p></article>
+        <article><div class="feature-icon">↗</div><h3>Clear progress</h3><p>See your application pipeline at a glance and quickly identify the next action.</p></article>
+        <article><div class="feature-icon">⌁</div><h3>Fast updates</h3><p>Add, edit, search and filter applications with an interface designed for everyday use.</p></article>
+      </div>
+    </section>
+
+    <section id="dashboard" class="page hidden">
+      <div class="page-title"><div><span class="eyebrow">OVERVIEW</span><h1>Application Dashboard</h1><p>A quick snapshot of your current job search.</p></div><button class="btn btn-primary" id="addDashBtn">+ Add Application</button></div>
+      <div class="stats-grid">
+        <div class="stat-card"><span>Total Applications</span><strong id="totalStat">0</strong><small>All tracked opportunities</small></div>
+        <div class="stat-card"><span>Applied</span><strong id="appliedStat">0</strong><small>Waiting for a response</small></div>
+        <div class="stat-card"><span>Interviews</span><strong id="interviewStat">0</strong><small>Active interview stages</small></div>
+        <div class="stat-card"><span>Offers</span><strong id="offerStat">0</strong><small>Successful opportunities</small></div>
+      </div>
+      <div class="dashboard-grid">
+        <div class="panel">
+          <div class="panel-head"><h2>Application Pipeline</h2><a href="#applications">View all →</a></div>
+          <div id="pipelineRows"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Recent Applications</h2></div>
+          <div id="recentRows"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="applications" class="page hidden">
+      <div class="page-title"><div><span class="eyebrow">MANAGE</span><h1>My Applications</h1><p>Search, filter and update your opportunities.</p></div><button class="btn btn-primary" id="addAppsBtn">+ Add Application</button></div>
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="Search company or role...">
+        <select id="statusFilter"><option value="All">All statuses</option><option>Applied</option><option>Interview</option><option>Offer</option><option>Rejected</option></select>
+      </div>
+      <div class="table-wrap">
+        <table><thead><tr><th>Company</th><th>Role</th><th>Status</th><th>Applied Date</th><th>Location</th><th></th></tr></thead>
+        <tbody id="applicationTable"></tbody></table>
+      </div>
+    </section>
+
+    <section id="details" class="page hidden">
+      <div class="page-title"><div><span class="eyebrow">APPLICATION DETAIL</span><h1 id="detailTitle">Application</h1><p id="detailSubtitle"></p></div><a class="btn btn-light" href="#applications">← Back</a></div>
+      <div class="detail-grid">
+        <div class="panel detail-main">
+          <div class="detail-header"><div class="company-logo" id="detailLogo">J</div><div><h2 id="detailCompany"></h2><p id="detailRole"></p></div><span class="status" id="detailStatus"></span></div>
+          <div class="detail-info"><div><span>Applied on</span><b id="detailDate"></b></div><div><span>Location</span><b id="detailLocation"></b></div><div><span>Type</span><b id="detailType"></b></div></div>
+          <h3>Notes</h3><p class="notes" id="detailNotes"></p>
+          <div class="detail-actions"><button class="btn btn-primary" id="editBtn">Edit</button><button class="btn btn-danger" id="deleteBtn">Delete</button></div>
+        </div>
+        <div class="panel">
+          <h2>Application Timeline</h2>
+          <div class="timeline"><div><i></i><div><b>Application created</b><small id="timelineDate"></small></div></div><div><i></i><div><b>Status: <span id="timelineStatus"></span></b><small>Current stage</small></div></div><div class="muted-line"><i></i><div><b>Next action</b><small>Keep the application updated</small></div></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="brand footer-brand"><span class="brand-mark">J</span><span>Job<span>Track</span></span></div><p>Full-stack internship project • HTML, CSS, JavaScript & Express.js</p></footer>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal-box">
+      <div class="modal-head"><div><span class="eyebrow">APPLICATION</span><h2 id="modalTitle">Add Application</h2></div><button class="close" id="closeModal">×</button></div>
+      <form id="appForm">
+        <input type="hidden" id="editId">
+        <label>Company<input id="company" required placeholder="e.g. Microsoft"></label>
+        <label>Job Role<input id="role" required placeholder="e.g. Frontend Developer"></label>
+        <div class="form-row"><label>Status<select id="status"><option>Applied</option><option>Interview</option><option>Offer</option><option>Rejected</option></select></label><label>Applied Date<input id="date" type="date" required></label></div>
+        <div class="form-row"><label>Location<input id="location" placeholder="e.g. Noida / Remote"></label><label>Type<select id="type"><option>Full-time</option><option>Internship</option><option>Part-time</option></select></label></div>
+        <label>Notes<textarea id="notes" rows="4" placeholder="Add a short note..."></textarea></label>
+        <div class="modal-actions"><button type="button" class="btn btn-light" id="cancelModal">Cancel</button><button class="btn btn-primary">Save Application</button></div>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
